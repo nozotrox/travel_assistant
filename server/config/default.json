@@ -1,0 +1,9 @@
+{
+    "database": { 
+        "type": "sqlite",
+        "name": "travel-agency",
+        "username": "",
+        "password": "",
+        "host": "data/database.sqlite"
+    }
+}
