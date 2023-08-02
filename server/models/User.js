@@ -20,6 +20,10 @@ const User = database.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    salt: {
+        type: DataTypes.STRING,
+        allowNull: false,
     }
 });
 

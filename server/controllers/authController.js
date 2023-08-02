@@ -6,6 +6,7 @@ exports.register = async (req, res) => {
 
         const { name, email, password } = req.body;
         const dbUser = await User.findOne({ where: { email } });
+        const passwordHashResult = hashPassword(password);
 
         if (dbUser) {
             res.status(400).send('User already exists!');
@@ -13,7 +14,8 @@ exports.register = async (req, res) => {
             const user = await User.create({
                 name,
                 email,
-                password: hashPassword(password),
+                password: passwordHashResult.hashedPassword,
+                salt: passwordHashResult.salt,
             });
             res.status(201);
             res.send(user);
@@ -32,11 +34,8 @@ exports.login = async (req, res) => {
 
         const user = await User.findOne({ where: { email } });
 
-        console.log(user.password);
-        console.log(hashPassword(password));
-
         if (user) {
-            const isSamePassword = comparePasswords(password, user.password);
+            const isSamePassword = comparePasswords(user.password, password, user.salt);
             if (isSamePassword) {
                 res.status(201);
                 return res.send(user);
