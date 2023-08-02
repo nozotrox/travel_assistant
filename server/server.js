@@ -10,13 +10,9 @@ sequelize.sync().then(() => console.log('db is ready'));
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => res.send('Hello World!'));
-app.post('/user', async (req, res) => { 
-    try {
-        await User.create(req.body);
-        res.send('User Created');
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
+// :::: Routes
+const authRoutes = require("./routes/authRoute");
+
+app.get('/', (req, res) => res.status(400).send("Bad Request"));
+app.use('/auth', authRoutes);
 app.listen(process.env.PORT || 3000);

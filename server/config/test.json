@@ -4,7 +4,7 @@
         "name": "travel-agency",
         "username": "",
         "password": "",
-        "host": "data/database.sqlite",
+        "host": "data/database.test.sqlite",
         "encription_algorithm": "sha256"
     }
 }

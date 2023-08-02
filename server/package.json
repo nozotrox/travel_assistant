@@ -4,7 +4,7 @@
   "description": "\"Travel assistant api for getting weather forecast, GPD and exchange rates by country\"",
   "main": "server.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "jest",
     "dev": "nodemon server.js"
   },
   "keywords": [
@@ -14,6 +14,7 @@
   "author": "Feliciano Mazoio",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "config": "^3.3.9",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -21,6 +22,7 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
+    "jest": "^29.6.2",
     "nodemon": "^3.0.1"
   }
 }
