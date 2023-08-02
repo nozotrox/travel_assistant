@@ -17,8 +17,9 @@ exports.verifyToken = (req, res, next) => {
         req.user = decoded;
         req.isAuth = true;
     } catch (error) {
-        req.isAuth = Boolean(token);
+        req.isAuth = false;
     }
     
-    return next();
+    next();
+    return req.isAuth;
 }

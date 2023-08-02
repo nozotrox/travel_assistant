@@ -21,6 +21,6 @@ app.get('/', verifyToken, (req, res) => {
     // res.status(400).send("Bad Request");
 });
 app.use('/auth', authRoutes);
-app.use('/services', authRoutes, servicesRoutes);
+app.use('/services', verifyToken, servicesRoutes);
 
 app.listen(process.env.PORT || 3000);
