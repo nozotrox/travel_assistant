@@ -13,6 +13,7 @@ const { verifyToken } = require("./middlewares/auth")
 
 // :::: Routes
 const authRoutes = require("./routes/authRoute");
+const servicesRoutes = require("./routes/servicesRoute");
 
 
 app.get('/', verifyToken, (req, res) => {
@@ -20,4 +21,6 @@ app.get('/', verifyToken, (req, res) => {
     // res.status(400).send("Bad Request");
 });
 app.use('/auth', authRoutes);
+app.use('/services', authRoutes, servicesRoutes);
+
 app.listen(process.env.PORT || 3000);

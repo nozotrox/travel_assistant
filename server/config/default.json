@@ -7,5 +7,10 @@
         "host": "data/database.sqlite",
         "encription_algorithm": "sha256",
         "encryption_rounds": 10
+    },
+    "services": {
+        "weatherAPI": "https://api.openweathermap.org/data/2.5/weather",
+        "citiesAPI": "http://api.openweathermap.org/geo/1.0/direct",
+        "citiesLimit": 5
     }
 }
