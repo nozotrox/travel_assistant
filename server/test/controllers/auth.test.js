@@ -96,4 +96,23 @@ test('When loggin in with valid email and password, should return status code 20
 
     await login(request, response);
     expect(response.status).toHaveBeenCalledWith(201);
+});
+
+test('When loggin in with valid email and password, should return status code 201 with an authentication token', async() => { 
+    const request = {
+        body: { 
+            email: 'anotherguy@gmail.com',
+            password: 'somepassword',
+        },
+    };
+
+    const response = { 
+        status: jest.fn((x) => x),
+        send: jest.fn((x) => x)
+    }
+
+    const responseObj = await login(request, response);
+    expect(response.status).toHaveBeenCalledWith(201);
+    expect(responseObj).toHaveProperty("authToken");
+    expect(responseObj.authToken).toBeDefined();
 })

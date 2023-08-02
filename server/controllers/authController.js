@@ -1,6 +1,14 @@
+require("dotenv").config();
 const User = require("../models/User");
 const { hashPassword, comparePasswords } = require("../utils/helpers");
+const jwt = require('jsonwebtoken');
 
+/**
+ * Registers user to the database
+ * @param {object} req
+ * @param {object} res
+ * @returns {any}
+ */
 exports.register = async (req, res) => {
     try {
 
@@ -28,6 +36,13 @@ exports.register = async (req, res) => {
 };
 
 
+/**
+ * Authenticates user. Upon successful authentication, a jwt authentication token
+ * attached to the user response object
+ * @param {object} req
+ * @param {object} res
+ * @returns {any}
+ */
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -37,8 +52,23 @@ exports.login = async (req, res) => {
         if (user) {
             const isSamePassword = comparePasswords(user.password, password, user.salt);
             if (isSamePassword) {
+                const authToken = jwt.sign(
+                    {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                    },
+                    process.env.JWT_SECRET,
+                    {
+                        expiresIn: "1h",
+                    }
+                )
+                user.authToken = authToken;
+                const responseObj = {...user.dataValues, authToken};
+
                 res.status(201);
-                return res.send(user);
+                res.send(responseObj);
+                return responseObj;
             }
         }
         res.status(400);
