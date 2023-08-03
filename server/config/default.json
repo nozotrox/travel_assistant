@@ -9,7 +9,7 @@
         "encryption_rounds": 10
     },
     "services": {
-        "weatherAPI": "https://api.openweathermap.org/data/2.5/weather",
+        "weatherAPI": "https://api.openweathermap.org/data/2.5/forecast",
         "citiesAPI": "http://api.openweathermap.org/geo/1.0/direct",
         "exchangeRatesAPI": "http://api.exchangeratesapi.io/v1/latest",
         "worldBankAPI": "http://api.worldbank.org/countries",
