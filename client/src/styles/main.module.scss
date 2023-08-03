@@ -81,6 +81,7 @@
   box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  
 
   .cityTitle { 
     font-size: 9pt;
@@ -137,6 +138,16 @@
     }
 
   }
+
+  center { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 400;
+    color: $color-text-faded;
+    font-size: 10pt;
+  }
 }
 
 .xRateContainer {
@@ -155,9 +166,10 @@
         display: flex;
         justify-content: space-between;
         
-        h2 { 
+        h1 { 
             display: inline-block;
-            font-weight: 600;
+            font-weight: 400;
+            font-size: 20pt
         };
         span { 
             display: inline-block;
@@ -168,7 +180,7 @@
         }
 
         .currenySymb { 
-            font-size: 14pt;
+            font-size: 12pt;
             font-weight: bold;
             color: $color-text-faded
         }

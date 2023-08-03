@@ -10,3 +10,14 @@ export const searchCity = async (cityName) => {
         return [];
     }
 }
+
+export const getCityInformation = async (location) => {
+    try {
+        const url = `${process.env.REACT_APP_API_URL}/services/travelinfo?lat=${location.latitude}&lon=${location.longitude}`;
+        const response = await axios.get(url, getDefaultRequestConfig());
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        return;
+    }
+}

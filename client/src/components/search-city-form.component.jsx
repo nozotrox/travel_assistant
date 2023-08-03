@@ -1,17 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MAP_PIN_ICON from "../assets/icons/map-pin.svg";
 import styles_form from "../styles/form.module.scss";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { searchCity } from "../api/api-interface";
+import { getCityInformation, searchCity } from "../api/api-interface";
 
 import LOADING_SVG from "../assets/icons/loading.svg";
+import { AppContext } from "../hooks/Context";
+import { LOADING_STATUS, NO_RESUTS_STATUS, RESULTS_FOUND_STATUS } from "../utils/constants";
 
 const CityList = ({ closeResults, itemList, setMapLocation }) => {
-  const handleClickLocation = (city) => {
-    setMapLocation({
+  const appContext = useContext(AppContext);
+
+  const handleClickLocation = async (city) => {
+    const location = {
       latitude: city.lat,
       longitude: city.lon,
-    });
+    };
+    setMapLocation(location);
+
+    appContext.setState({...appContext.state, location: city, status: LOADING_STATUS});
+    const response = await getCityInformation(location);
+    if(Boolean(response)) {
+      appContext.setState({
+        ...appContext.state,
+        location: city, 
+        weather: response.forecast,
+        xChangeRage: response.exchangeRate,
+        popData: response.countryData,
+        status: RESULTS_FOUND_STATUS});
+    } else { 
+      appContext.setState({...appContext.state, status: NO_RESUTS_STATUS})
+    }
 
     closeResults();
   };
@@ -95,6 +114,7 @@ const SearchCityForm = ({ setMapLocation }) => {
           <Input
             className={styles_form.searchInput}
             name="country"
+            autoComplete="off"
             value={countryName}
             onChange={(e) => handleFormChange(e)}
             type="text"

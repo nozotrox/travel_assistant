@@ -13,8 +13,8 @@
   -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
 
-  &:focus {
-    border-color: $color-primary;
+  &:focus, &:hover {
+    border-color: $color-primary !important;
     outline: none;
     background-color: $color-dark;
     color: $color-text-dark;
