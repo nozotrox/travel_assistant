@@ -1,0 +1,55 @@
+@import "./foundation";
+
+.searchInput {
+  outline: none;
+  border-radius: 50px;
+  color: $color-text-dark;
+  border-color: transparent;
+  font-weight: 400;
+  padding-left: 40px;
+  background: $color-dark url("../assets/icons/search.svg") no-repeat 10px center;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+  &:focus {
+    border-color: $color-primary;
+    outline: none;
+    background-color: $color-dark;
+    color: $color-text-dark;
+  }
+
+
+}
+
+.mapFormContainer {
+  width: 800px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  left: calc((100% - 800px) / 2);
+  top: 1rem;
+  > * {
+    display: inline-block;
+  }
+
+  .searchFormGroup {
+    width: 80%;
+    margin: 0 1rem;
+  }
+
+  .searchButton {
+    border-radius: 50px;
+    background-color: $color-primary;
+    border-color: transparent;
+
+    box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+    -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+    -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+    &:hover, &:focus {
+      background-color: #45b28c;
+    }
+  }
+}

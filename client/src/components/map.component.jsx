@@ -8,7 +8,9 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 import styles_main from "../styles/main.module.scss";
+import styles_form from "../styles/form.module.scss";
 import { useEffect, useState } from "react";
 
 const CUSTOM_ICON = new Icon({
@@ -44,7 +46,6 @@ const MapMarker = () => {
     });
   }, []);
 
-
   const { latitude, longitude } = geoLocation;
   const position = [latitude, longitude];
   map.flyTo(position, 14, { duration: 3 });
@@ -59,6 +60,12 @@ const MapMarker = () => {
 };
 
 const Map = () => {
+  const searchCity = (e) => {
+    e.preventDefault();
+    
+  };
+
+
   return (
     <div className={styles_main.map_container}>
       <MapContainer center={DEFAULT_POSITION} zoom={13} scrollWheelZoom={true}>
@@ -68,6 +75,17 @@ const Map = () => {
         />
         <MapMarker position={DEFAULT_POSITION} />
       </MapContainer>
+      <Form className={styles_form.mapFormContainer} inline>
+        <FormGroup className={styles_form.searchFormGroup}>
+          <Input className={styles_form.searchInput} type="text" />
+        </FormGroup>
+        <Button
+          className={styles_form.searchButton}
+          onClick={(e) => searchCity(e)}
+        >
+          Search
+        </Button>
+      </Form>
     </div>
   );
 };
