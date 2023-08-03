@@ -14,6 +14,14 @@ const POPULATION_ICODE = config.get("services.api_params.current_population_icod
 const CITIES_SEARCH_LIMIT = config.get("services.api_params.citiesLimit");
 
 
+/**
+ * Get city information about weather, conversion rate, gdp per capita and current population.
+ * If user is not authenticated or isn't logged int, only the weather forecase info will be
+ * returned
+ * @param {object} req
+ * @param {object} res
+ * @returns {any}
+ */
 exports.getCityInfo = async (req, res) => {
     try {
 
@@ -63,8 +71,8 @@ exports.getCityInfo = async (req, res) => {
                 value: response.data[1][0].value,
                 year: response.data[1][0].year,
             }
-            
-            countryData = {gdp, pop};
+
+            countryData = { gdp, pop };
         }
 
 
@@ -75,13 +83,19 @@ exports.getCityInfo = async (req, res) => {
     }
 }
 
+
+/**
+ * Searches for cities by keyword.
+ * @param {any} req
+ * @param {any} res
+ * @returns {any}
+ */
 exports.getCityOptions = async (req, res) => {
     try {
-        const { q } = req.query;
 
+        const { q } = req.query;
         const url = `${CITIES_API_URL}?q=${q}&limit=${CITIES_SEARCH_LIMIT}&appid=${process.env.OPENWEATHER_API_KEY}`;
         const response = await axios.get(url);
-
         const data = response.data;
 
         res.status(201).send(data);
