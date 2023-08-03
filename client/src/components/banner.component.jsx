@@ -13,12 +13,10 @@ const Banner = () => {
             typewriter
               .typeString("Where do you want to go next?")
               .callFunction(() => {
-                console.log("String typed out!");
               })
               .pauseFor(5000)
               .deleteAll()
               .callFunction(() => {
-                console.log("All strings were deleted");
               })
               .start();
           }}
