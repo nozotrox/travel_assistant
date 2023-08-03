@@ -5,6 +5,47 @@
 }
 
 #navbar { 
-    border: 2px solid magenta;
     color: white;
+    padding: 0 1rem;
+
+    
+    .logo_container { 
+        position: relative;
+        padding: .7rem .6rem;
+        .dot { 
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: $color-primary;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 30px;
+            right: -10px;
+        }
+
+    }
+
+    .nav_items_container { 
+        list-style-type: none;
+        
+        li { 
+            display: inline-block;
+            padding: .4rem 1rem;
+
+            &.active_nav { 
+                color: $color-primary;
+            }
+
+            &:hover { 
+                background-color: $color-primary;
+                color: white;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: background-color .4s ease-in-out;
+            }
+
+
+        }
+    }
 }
+

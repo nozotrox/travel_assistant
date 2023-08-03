@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:ital,wght@0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:ital,wght@0,500;0,700;1,400&family=Russo+One&display=swap');
 
 // :::: base styling
 $color-primary: #5AE4B3;
@@ -8,3 +8,6 @@ $base-font: 'Poppins', sans-serif;
     font-family: $base-font;
 }
 
+h1 { 
+    font-family: 'Russo One', sans-serif;
+}
