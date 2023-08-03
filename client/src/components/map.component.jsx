@@ -18,14 +18,8 @@ const CUSTOM_ICON = new Icon({
   iconSize: [38, 38],
 });
 
-
-
-const MapMarker = () => {
+const MapMarker = ({ geoLocation, setGeoLocation }) => {
   const map = useMap();
-  const [geoLocation, setGeoLocation] = useState({
-    latitude: DEFAULT_POSITION[0],
-    longitude: DEFAULT_POSITION[1],
-  });
 
   useMapEvents({
     click(e) {
@@ -59,9 +53,11 @@ const MapMarker = () => {
   );
 };
 
-
-
 const Map = () => {
+  const [geoLocation, setGeoLocation] = useState({
+    latitude: DEFAULT_POSITION[0],
+    longitude: DEFAULT_POSITION[1],
+  });
 
   return (
     <div className={styles_main.map_container}>
@@ -70,9 +66,9 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapMarker position={DEFAULT_POSITION} />
+        <MapMarker geoLocation={geoLocation} setGeoLocation={setGeoLocation} />
       </MapContainer>
-      <SearchCityForm />
+      <SearchCityForm setMapLocation={setGeoLocation} />
     </div>
   );
 };

@@ -6,10 +6,23 @@ import { searchCity } from "../api/api-interface";
 
 import LOADING_SVG from "../assets/icons/loading.svg";
 
-const _CityList = ({ itemList }) => {
+const _CityList = ({ closeResults, itemList, setMapLocation }) => {
+  const handleClickLocation = (city) => {
+    setMapLocation({
+      latitude: city.lat,
+      longitude: city.lon,
+    });
+
+    closeResults();
+  };
+
   return itemList.map((city, idx) => {
     return (
-      <div key={`city-${idx}`} className={styles_form.listItem}>
+      <div
+        key={`city-${idx}`}
+        className={styles_form.listItem}
+        onClick={(e) => handleClickLocation(city)}
+      >
         <div className={styles_form.icon}>
           <img src={MAP_PIN_ICON} alt="pin_icon" />
         </div>
@@ -50,52 +63,73 @@ const _LoadingAnimation = () => {
   );
 };
 
-const SearchCityForm = () => {
+const SearchCityForm = ({ setMapLocation }) => {
   const [countryName, setCountryName] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cityResults, setCityResults] = useState([]);
 
   const search = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setIsOpen(true);
     const result = await searchCity(countryName);
     setCityResults(result);
     setIsLoading(false);
   };
 
   const handleFormChange = (e) => {
-    console.log("form");
     setCountryName(e.target.value);
+  };
+
+  const handleCloseResults = (e) => {
+    setIsOpen(false);
   };
 
   const hasResults = Boolean(cityResults) && cityResults.length > 0;
 
   return (
-    <Form className={styles_form.mapFormContainer} inline>
-      <FormGroup className={styles_form.searchFormGroup}>
-        <Input
-          className={styles_form.searchInput}
-          name="country"
-          value={countryName}
-          onChange={(e) => handleFormChange(e)}
-          type="text"
-        />
-      </FormGroup>
-      <Button className={styles_form.searchButton} onClick={(e) => search(e)}>
-        Search
-      </Button>
-      <div className={styles_form.cityHintContainer}>
-        <div className={styles_form.cityHintList}>
-          {isLoading ? (
-            <_LoadingAnimation />
-          ) : hasResults ? (
-            <_CityList itemList={cityResults} />
-          ) : (
-            <_404Cities />
-          )}
-        </div>
-      </div>
-    </Form>
+    <>
+      <Form className={styles_form.mapFormContainer} inline>
+        <FormGroup className={styles_form.searchFormGroup}>
+          <Input
+            className={styles_form.searchInput}
+            name="country"
+            value={countryName}
+            onChange={(e) => handleFormChange(e)}
+            type="text"
+          />
+        </FormGroup>
+        <Button className={styles_form.searchButton} onClick={(e) => search(e)}>
+          Search
+        </Button>
+        {isOpen && (
+          <>
+            <div className={styles_form.cityHintContainer}>
+              <div className={styles_form.cityHintList}>
+                {isLoading ? (
+                  <_LoadingAnimation />
+                ) : hasResults ? (
+                  <_CityList
+                    itemList={cityResults}
+                    closeResults={handleCloseResults}
+                    setMapLocation={setMapLocation}
+                  />
+                ) : (
+                  <_404Cities />
+                )}
+              </div>
+            </div>
+            <span
+              onClick={(e) => handleCloseResults(e)}
+              className={styles_form.closeSearchResultsButton}
+            >
+              Close
+            </span>
+          </>
+        )}
+      </Form>
+    </>
   );
 };
 

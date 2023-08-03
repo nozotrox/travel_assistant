@@ -42,7 +42,7 @@
     transition: 0.3s ease-in-out;
 
     div {
-      padding: .7rem;
+      padding: 0.7rem;
       p {
         font-weight: 500;
         margin-bottom: -0.5rem;
@@ -64,7 +64,6 @@
       background-color: #ffffff11;
       border-radius: 10px;
       cursor: pointer;
-      
     }
   }
 }
@@ -102,3 +101,21 @@
   }
 }
 
+.closeSearchResultsButton {
+  color: white;
+  background-color: $color-dark;
+  margin: 1rem 0 0 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 9pt;
+  border-radius: 15px;
+  z-index: 1000;
+
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+  &:hover {
+    background-color: $color-primary;
+    cursor: pointer;
+  }
+}
