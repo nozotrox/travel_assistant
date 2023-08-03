@@ -8,17 +8,17 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
-import { Button, Form, FormGroup, Input } from "reactstrap";
 import styles_main from "../styles/main.module.scss";
-import styles_form from "../styles/form.module.scss";
 import { useEffect, useState } from "react";
 
+import SearchCityForm from "./search-city-form.component";
+const DEFAULT_POSITION = [-25.476033, 30.969395];
 const CUSTOM_ICON = new Icon({
   iconUrl: require("../assets/icons/pin.png"),
   iconSize: [38, 38],
 });
 
-const DEFAULT_POSITION = [-25.476033, 30.969395];
+
 
 const MapMarker = () => {
   const map = useMap();
@@ -59,12 +59,9 @@ const MapMarker = () => {
   );
 };
 
-const Map = () => {
-  const searchCity = (e) => {
-    e.preventDefault();
-    
-  };
 
+
+const Map = () => {
 
   return (
     <div className={styles_main.map_container}>
@@ -75,17 +72,7 @@ const Map = () => {
         />
         <MapMarker position={DEFAULT_POSITION} />
       </MapContainer>
-      <Form className={styles_form.mapFormContainer} inline>
-        <FormGroup className={styles_form.searchFormGroup}>
-          <Input className={styles_form.searchInput} type="text" />
-        </FormGroup>
-        <Button
-          className={styles_form.searchButton}
-          onClick={(e) => searchCity(e)}
-        >
-          Search
-        </Button>
-      </Form>
+      <SearchCityForm />
     </div>
   );
 };

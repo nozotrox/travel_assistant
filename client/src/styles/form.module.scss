@@ -7,7 +7,8 @@
   border-color: transparent;
   font-weight: 400;
   padding-left: 40px;
-  background: $color-dark url("../assets/icons/search.svg") no-repeat 10px center;
+  background: $color-dark url("../assets/icons/search.svg") no-repeat 10px
+    center;
   box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
@@ -18,8 +19,54 @@
     background-color: $color-dark;
     color: $color-text-dark;
   }
+}
 
+.cityHintContainer {
+  width: 100%;
+  padding: 0 3rem 0 1rem;
+}
 
+.cityHintList {
+  padding: 1.5rem 1rem;
+  background-color: $color-dark;
+  color: white;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  border-radius: 10px;
+
+  .listItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+
+    div {
+      padding: .7rem;
+      p {
+        font-weight: 500;
+        margin-bottom: -0.5rem;
+        font-size: 11pt;
+      }
+
+      small {
+        font-weight: 400;
+        color: $color-text-faded;
+        font-size: 8pt;
+      }
+
+      .icon {
+        padding: 0 0 !important;
+      }
+    }
+
+    &:hover {
+      background-color: #ffffff11;
+      border-radius: 10px;
+      cursor: pointer;
+      
+    }
+  }
 }
 
 .mapFormContainer {
@@ -48,8 +95,10 @@
     -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
     -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: #45b28c;
     }
   }
 }
+

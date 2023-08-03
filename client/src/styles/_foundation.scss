@@ -1,15 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:ital,wght@0,500;0,700;1,400&family=Russo+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Russo+One&display=swap");
 
 // :::: base styling
-$color-primary: #5AE4B3;
+$color-primary: #5ae4b3;
 $color-dark: #242424;
 $color-text-dark: #bfbfbf;
-$base-font: 'Poppins', sans-serif;
+$color-text-faded: #a3a3a3;
+$base-font: "Poppins", sans-serif;
 
-* { 
-    font-family: $base-font;
+* {
+  font-family: $base-font;
 }
 
-h1 { 
-    font-family: 'Russo One', sans-serif;
+h1 {
+  font-family: "Russo One", sans-serif;
+}
+
+.fadedText {
+  color: $color-text-faded;
+}
+
+.primaryText {
+  color: $color-primary;
 }
