@@ -1,72 +1,92 @@
-@import './foundation';
+@import "./foundation";
 
 // ::::::::::::::::: NAVIGATION BAR
-#navbar { 
-    color: white;
-    padding: 0 1rem;
+#navbar {
+  color: white;
+  padding: 0 1rem;
 
-    
-    .logo_container { 
-        position: relative;
-        padding: .7rem .6rem;
-        .dot { 
-            display: block;
-            width: 10px;
-            height: 10px;
-            background-color: $color-primary;
-            border-radius: 50%;
-            position: absolute;
-            bottom: 30px;
-            right: -10px;
-        }
-
+  .logo_container {
+    position: relative;
+    padding: 0.7rem 0.6rem;
+    .dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: $color-primary;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 30px;
+      right: -10px;
     }
+  }
 
-    .nav_items_container { 
-        list-style-type: none;
-        
-        li { 
-            display: inline-block;
-            padding: .4rem 1rem;
+  .nav_items_container {
+    list-style-type: none;
 
-            &.active_nav { 
-                color: $color-primary;
-            }
+    li {
+      display: inline-block;
+      padding: 0.4rem 1rem;
 
-            &:hover { 
-                background-color: $color-primary;
-                color: white;
-                border-radius: 30px;
-                cursor: pointer;
-                transition: background-color .4s ease-in-out;
-            }
+      &.active_nav {
+        color: $color-primary;
+      }
 
-
-        }
+      &:hover {
+        background-color: $color-primary;
+        color: white;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.4s ease-in-out;
+      }
     }
+  }
 }
 
 // ::::::::::::::::: BANNER
-.banner { 
-    padding: 2rem 0;
-    span {
-        font-family: 'Russo One', sans-serif;
-        color: $color-primary;
-        font-size: 42pt;
-    }
+.banner {
+  padding: 2rem 0;
+  span {
+    font-family: "Russo One", sans-serif;
+    color: $color-primary;
+    font-size: 42pt;
+  }
 
-    p { 
-        width: 60%;
-        color: white;
-    }
+  p {
+    width: 60%;
+    color: white;
+  }
 }
-
 
 // ::::::::::::::::: MAP
 .map_container {
-    position: relative;
-    width: 80%;
-    height: 600px;
-    margin: 0 auto;
-    border-radius: 10px;
+  position: relative;
+  width: 70%;
+  height: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+}
+
+.cityInfoContainer {
+  width: 20%;
+  height: 600px;
+  border-radius: 10px;
+  border: 1px solid #393939;
+  padding: 1rem;
+  color: white;
+  font-weight: 400;
+  background-color: $color-background-dark;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+}
+
+.mainContentContainer {
+  display: flex;
+  padding: 1rem 5rem;
+  > div {
+    display: inline-block;
+  }
 }

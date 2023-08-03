@@ -38,7 +38,7 @@ const MapMarker = ({ geoLocation, setGeoLocation }) => {
         longitude: pos.coords.longitude,
       });
     });
-  }, []);
+  }, [setGeoLocation]);
 
   const { latitude, longitude } = geoLocation;
   const position = [latitude, longitude];

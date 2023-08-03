@@ -6,7 +6,7 @@ import { searchCity } from "../api/api-interface";
 
 import LOADING_SVG from "../assets/icons/loading.svg";
 
-const _CityList = ({ closeResults, itemList, setMapLocation }) => {
+const CityList = ({ closeResults, itemList, setMapLocation }) => {
   const handleClickLocation = (city) => {
     setMapLocation({
       latitude: city.lat,
@@ -40,7 +40,7 @@ const _CityList = ({ closeResults, itemList, setMapLocation }) => {
   });
 };
 
-const _404Cities = () => {
+const E404Cities = () => {
   return (
     <center>
       <small>
@@ -55,7 +55,7 @@ const _404Cities = () => {
   );
 };
 
-const _LoadingAnimation = () => {
+const LoadingAnimation = () => {
   return (
     <center>
       <img src={LOADING_SVG} alt="loading" />
@@ -108,15 +108,15 @@ const SearchCityForm = ({ setMapLocation }) => {
             <div className={styles_form.cityHintContainer}>
               <div className={styles_form.cityHintList}>
                 {isLoading ? (
-                  <_LoadingAnimation />
+                  <LoadingAnimation />
                 ) : hasResults ? (
-                  <_CityList
+                  <CityList
                     itemList={cityResults}
                     closeResults={handleCloseResults}
                     setMapLocation={setMapLocation}
                   />
                 ) : (
-                  <_404Cities />
+                  <E404Cities />
                 )}
               </div>
             </div>
