@@ -86,11 +86,125 @@
     font-size: 9pt;
   }
 
-  .cityWeatherInfo { 
+  .currentWeatherInfo { 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .currentDate { 
+        font-size: 8pt;
+        font-weight: 400;
+        display: block;
+        margin-top: -.7rem;
+    }
+
+    img { 
+        width: 100px;
+        height: 100px;
+    }
   }
+
+  .currentWeatherValue { 
+    font-size: 42pt;
+  }
+
+  .forecastWeahterInfo { 
+    border-bottom: .5px solid #424242;
+    .weatherForecastItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        font-weight: 500;
+        font-size: 14pt;
+        background-color: #24242481;
+        padding: .3rem .6rem;
+        border-radius: 14px;
+        margin: .5rem 0;
+
+        .min { 
+            font-weight: 400;
+            font-size: 9pt;
+            margin: 0 .3rem;
+        }
+
+
+        img { 
+            width: 24px;
+            height: 24px;
+            margin: 0 .4rem;
+            margin-bottom: 4px;
+        }
+    }
+
+  }
+}
+
+.xRateContainer {
+    padding: .3rem .7rem;
+    margin: .7rem 0;
+    border-radius: 10px;
+    background-color: #24242481;
+    > div { 
+        span { 
+            font-size: 8pt;
+            margin: 0 .2rem;
+        }
+    }
+
+    .currencyInfo { 
+        display: flex;
+        justify-content: space-between;
+        
+        h2 { 
+            display: inline-block;
+            font-weight: 600;
+        };
+        span { 
+            display: inline-block;
+            color: white;
+            font-weight: 400;
+            margin-left: 0rem;
+            font-size: 10pt;
+        }
+
+        .currenySymb { 
+            font-size: 14pt;
+            font-weight: bold;
+            color: $color-text-faded
+        }
+
+        .divider { 
+            border-right: 1px solid #424242;
+            padding-right: 2rem;
+        }
+
+    }
+}
+
+
+.hDivider { 
+    height: .5px;
+    width: 100%;
+    background-color: #424242;
+}
+
+.countryInfo { 
+    display: flex;
+    justify-content: space-between;
+    padding: .7rem 0;
+    .indicatorItem { 
+        padding: .8rem;
+        background-color: #24242481;
+        border-radius: 10px;
+        font-size: 8pt;
+        color: $color-text-faded;
+
+        h1 { 
+            color: white;
+            font-size: 20pt;
+            margin: 0;
+        }
+    }
 }
 
 .mainContentContainer {
@@ -100,3 +214,5 @@
     display: inline-block;
   }
 }
+
+
