@@ -1,5 +1,5 @@
 {
-    "database": { 
+    "database": {
         "type": "sqlite",
         "name": "travel-agency",
         "username": "",
@@ -11,8 +11,13 @@
     "services": {
         "weatherAPI": "https://api.openweathermap.org/data/2.5/weather",
         "citiesAPI": "http://api.openweathermap.org/geo/1.0/direct",
-        "citiesLimit": 5,
-        "exchangeRatesAPI": "http://api.exchangeratesapi.io/v1/latest"
+        "exchangeRatesAPI": "http://api.exchangeratesapi.io/v1/latest",
+        "worldBankAPI": "http://api.worldbank.org/countries",
+        "api_params": {
+            "gdp_per_capita_icode": "NY.GDP.PCAP.CD",
+            "current_population_icode": "SP.POP.TOTL",
+            "citiesLimit": 5
+        }
     },
     "country-currency": {
         "BD": "BDT",
