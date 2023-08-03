@@ -16,7 +16,9 @@ const CityList = ({ closeResults, itemList, setMapLocation }) => {
       latitude: city.lat,
       longitude: city.lon,
     };
+
     setMapLocation(location);
+    closeResults();
 
     appContext.setState({...appContext.state, location: city, status: LOADING_STATUS});
     const response = await getCityInformation(location);
@@ -25,14 +27,13 @@ const CityList = ({ closeResults, itemList, setMapLocation }) => {
         ...appContext.state,
         location: city, 
         weather: response.forecast,
-        xChangeRage: response.exchangeRate,
+        xChangeRate: response.exchangeRate,
         popData: response.countryData,
         status: RESULTS_FOUND_STATUS});
     } else { 
       appContext.setState({...appContext.state, status: NO_RESUTS_STATUS})
     }
 
-    closeResults();
   };
 
   return itemList.map((city, idx) => {

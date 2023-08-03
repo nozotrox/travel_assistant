@@ -81,65 +81,62 @@
   box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
   -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
-  
 
-  .cityTitle { 
+  .cityTitle {
     font-size: 9pt;
   }
 
-  .currentWeatherInfo { 
+  .currentWeatherInfo {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .currentDate { 
-        font-size: 8pt;
-        font-weight: 400;
-        display: block;
-        margin-top: -.7rem;
+    .currentDate {
+      font-size: 8pt;
+      font-weight: 400;
+      display: block;
+      margin-top: -0.7rem;
     }
 
-    img { 
-        width: 100px;
-        height: 100px;
+    img {
+      width: 100px;
+      height: 100px;
     }
   }
 
-  .currentWeatherValue { 
+  .currentWeatherValue {
     font-size: 42pt;
   }
 
-  .forecastWeahterInfo { 
-    border-bottom: .5px solid #424242;
+  .forecastWeahterInfo {
+    border-bottom: 0.5px solid #424242;
     .weatherForecastItem {
-        display: flex;
-        justify-content: space-between;
-        align-items: center; 
-        font-weight: 500;
-        font-size: 14pt;
-        background-color: #24242481;
-        padding: .3rem .6rem;
-        border-radius: 14px;
-        margin: .5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      font-size: 14pt;
+      background-color: #24242481;
+      padding: 0.3rem 0.6rem;
+      border-radius: 14px;
+      margin: 0.5rem 0;
 
-        .min { 
-            font-weight: 400;
-            font-size: 9pt;
-            margin: 0 .3rem;
-        }
+      .min {
+        font-weight: 400;
+        font-size: 9pt;
+        margin: 0 0.3rem;
+      }
 
-
-        img { 
-            width: 24px;
-            height: 24px;
-            margin: 0 .4rem;
-            margin-bottom: 4px;
-        }
+      img {
+        width: 24px;
+        height: 24px;
+        margin: 0 0.4rem;
+        margin-bottom: 4px;
+      }
     }
-
   }
 
-  center { 
+  center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,72 +148,89 @@
 }
 
 .xRateContainer {
-    padding: .3rem .7rem;
-    margin: .7rem 0;
-    border-radius: 10px;
-    background-color: #24242481;
-    > div { 
-        span { 
-            font-size: 8pt;
-            margin: 0 .2rem;
-        }
+  padding: 0.3rem 0.7rem;
+  margin: 0.7rem 0;
+  border-radius: 10px;
+  background-color: #24242481;
+  > div {
+    span {
+      font-size: 8pt;
+      margin: 0 0.2rem;
     }
+  }
 
-    .currencyInfo { 
-        display: flex;
-        justify-content: space-between;
-        
-        h1 { 
-            display: inline-block;
-            font-weight: 400;
-            font-size: 20pt
-        };
-        span { 
-            display: inline-block;
-            color: white;
-            font-weight: 400;
-            margin-left: 0rem;
-            font-size: 10pt;
-        }
-
-        .currenySymb { 
-            font-size: 12pt;
-            font-weight: bold;
-            color: $color-text-faded
-        }
-
-        .divider { 
-            border-right: 1px solid #424242;
-            padding-right: 2rem;
-        }
-
-    }
-}
-
-
-.hDivider { 
-    height: .5px;
-    width: 100%;
-    background-color: #424242;
-}
-
-.countryInfo { 
+  .currencyInfo {
     display: flex;
     justify-content: space-between;
-    padding: .7rem 0;
-    .indicatorItem { 
-        padding: .8rem;
-        background-color: #24242481;
-        border-radius: 10px;
-        font-size: 8pt;
-        color: $color-text-faded;
 
-        h1 { 
-            color: white;
-            font-size: 20pt;
-            margin: 0;
-        }
+    h1 {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 18pt;
     }
+    span {
+      display: inline-block;
+      color: white;
+      font-weight: 400;
+      margin-left: 0rem;
+      font-size: 10pt;
+    }
+
+    .currenySymb {
+      font-size: 12pt;
+      font-weight: bold;
+      color: $color-text-faded;
+    }
+
+    .divider {
+      border-right: 1px solid #424242;
+      padding-right: 2rem;
+    }
+  }
+}
+
+.hDivider {
+  height: 0.5px;
+  width: 100%;
+  background-color: #424242;
+}
+
+.countryInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  .indicatorItem {
+    padding: 0.8rem;
+    background-color: #24242481;
+    border-radius: 10px;
+    font-size: 8pt;
+    color: $color-text-faded;
+
+    h1 {
+      color: white;
+      font-size: 18pt;
+      margin: 0;
+    }
+  }
+}
+
+.authenticateBanner {
+  display: flex;
+  flex-direction: column;
+  background-color: #24242481;
+  margin: 1rem 0;
+  border-radius: 10px;
+  padding: 6rem 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 10pt;
+  height: 60px;
+
+  p {
+    color: $color-text-faded;
+  }
 }
 
 .mainContentContainer {
@@ -227,4 +241,30 @@
   }
 }
 
+.buttonsAuthContainer {
+  span {
+    display: inline-block;
+    margin: 0 1rem;
+    padding: 0.4rem 0.8rem;
 
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:first-child {
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+
+    &:last-child {
+      background-color: $color-primary;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: #45b28c;
+      }
+    }
+  }
+}

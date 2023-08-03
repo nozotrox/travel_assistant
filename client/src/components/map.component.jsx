@@ -9,9 +9,12 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import styles_main from "../styles/main.module.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import SearchCityForm from "./search-city-form.component";
+import { AppContext } from "../hooks/Context";
+import { LOADING_STATUS, NO_RESUTS_STATUS, RESULTS_FOUND_STATUS } from "../utils/constants";
+import { getCityInformation } from "../api/api-interface";
 const DEFAULT_POSITION = [-25.476033, 30.969395];
 const CUSTOM_ICON = new Icon({
   iconUrl: require("../assets/icons/pin.png"),
@@ -20,14 +23,30 @@ const CUSTOM_ICON = new Icon({
 
 const MapMarker = ({ geoLocation, setGeoLocation }) => {
   const map = useMap();
+  const appContext = useContext(AppContext);
 
   useMapEvents({
-    click(e) {
-      const position = [e.latlng.lat, e.latlng.lng];
-      setGeoLocation({
-        latitude: position[0],
-        longitude: position[1],
-      });
+    async click(e) {
+      const location = {
+        latitude: e.latlng.lat,
+        longitude: e.latlng.lng,
+      }
+      setGeoLocation(location);
+
+      appContext.setState({...appContext.state, location, status: LOADING_STATUS});
+      const response = await getCityInformation(location);
+      if(Boolean(response)) {
+        appContext.setState({
+          ...appContext.state,
+          location: response.forecast.city, 
+          weather: response.forecast,
+          xChangeRate: response.exchangeRate,
+          popData: response.countryData,
+          status: RESULTS_FOUND_STATUS});
+      } else { 
+        appContext.setState({...appContext.state, status: NO_RESUTS_STATUS})
+      }
+  
     },
   });
 

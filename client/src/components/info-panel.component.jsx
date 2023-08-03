@@ -20,7 +20,8 @@ const WeatherInfo = () => {
   const appContext = useContext(AppContext);
 
   const cityName = appContext.state.location.name;
-  const stateName = appContext.state.location.state;
+  const stateName =
+    appContext.state.location.state || appContext.state.location.country;
   const weather = appContext.state.weather;
 
   const forecast = Boolean(weather.list) ? weather.list : [];
@@ -66,10 +67,16 @@ const WeatherInfo = () => {
               </div>
               <div>
                 <span>
-                  <b>{moment(temp.dt_txt).add(idx, "days").format("DD")}</b>
+                  <b>
+                    {moment(temp.dt_txt)
+                      .add(idx + 1, "days")
+                      .format("DD")}
+                  </b>
                 </span>
                 <span className={styles_main.min}>
-                  {moment(temp.dt_txt).add(idx, "days").format("MMM, ddd")}
+                  {moment(temp.dt_txt)
+                    .add(idx + 1, "days")
+                    .format("MMM, ddd")}
                 </span>
               </div>
             </div>
@@ -82,7 +89,6 @@ const WeatherInfo = () => {
 
 const ExchangeRateInfo = () => {
   const appContext = useContext(AppContext);
-
   let currencyCode;
   let exchangeRate;
   try {
@@ -140,22 +146,40 @@ const CountryDataInfo = () => {
   );
 };
 
+const SubscribeLayout = () => {
+  return (
+    <div className={styles_main.authenticateBanner}>
+      <p>Login or Register to see more information.</p>
+      <div className={styles_main.buttonsAuthContainer}>
+          <span>Login</span>
+          <span>Sign Up</span>
+      </div>
+    </div>
+  );
+};
+
 const InfoPanel = () => {
   const appContext = useContext(AppContext);
   const status = appContext.state.status;
+  const isAuth = Boolean(Object.keys(appContext.state.popData).length);
   return (
     <div className={styles_main.cityInfoContainer}>
       {status === RESULTS_FOUND_STATUS && (
         <>
           <WeatherInfo />
-          <ExchangeRateInfo />
-          <div className={styles_main.hDivider}></div>
-          <CountryDataInfo />
+          {isAuth && (
+            <>
+              <ExchangeRateInfo />
+              <div className={styles_main.hDivider}></div>
+              <CountryDataInfo />
+            </>
+          )}
+          {!isAuth && <SubscribeLayout />}
         </>
       )}
       {status === IDLE_STATUS && (
         <center>
-            Search for a city <br></br>to get results.
+          Search for a city <br></br>to get results.
         </center>
       )}
       {status === LOADING_STATUS && (

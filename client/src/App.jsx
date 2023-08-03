@@ -9,7 +9,7 @@ import { useState } from "react";
 import { IDLE_STATUS } from "./utils/constants";
 
 const def = {
-  "weather": {
+  "forecast": {
       "list": [
           {
               "dt": 1691096400,
@@ -1493,34 +1493,16 @@ const def = {
           "sunset": 1691076681
       }
   },
-  "xChangeRate": {
-      "success": true,
-      "timestamp": 1691088665,
-      "base": "EUR",
-      "date": "2023-08-03",
-      "rates": {
-          "ZAR": 20.476242
-      }
-  },
-  "popData": {
-      "gdp": {
-          "indicator": "GDP per capita (current US$)",
-          "value": 6776.48007742932
-      },
-      "pop": {
-          "indicator": "Population, total",
-          "value": 59893885
-      }
-  }
+  "exchangeRate": {},
+  "countryData": {}
 }
-
 
 function App() {
   const [state, setState] = useState({
-    weather: def.weather,
+    weather: {},
     location: {},
-    xChangeRate: def.xChangeRate,
-    popData: def.popData,
+    xChangeRate: {},
+    popData: {},
     status: IDLE_STATUS,
   });
 
