@@ -1,20 +1,36 @@
 import './App.css';
-import styles_main from "./styles/main.module.scss"
-import logo from "./assets/icons/logo.png"
+import NavigationBar from './components/navigation-bar.component';
+import styles_main from "./styles/main.module.scss";
+import Typewriter from "typewriter-effect";
 
 function App() {
   return (
     <div id="app">
-      <header id={styles_main.navbar} className="d-flex justify-content-between align-items-center">
-        <div className={styles_main.logo_container}>
-          <h1>Travel Genius</h1>
-          <span className={styles_main.dot}></span>
+      <NavigationBar />
+      <center className={styles_main.banner}>
+        {/* <h1 className={styles_main.banner_text}>Where do you want to go next?</h1> */}
+        <div className={styles_main.banner_text}>
+          <Typewriter
+
+            options={{
+              loop: true
+            }}
+
+            onInit={(typewriter) => {
+              typewriter.typeString('Where do you want to go next?')
+                .callFunction(() => {
+                  console.log('String typed out!');
+                })
+                .pauseFor(5000)
+                .deleteAll()
+                .callFunction(() => {
+                  console.log('All strings were deleted');
+                })
+                .start();
+            }}
+          />
         </div>
-        <ul className={styles_main.nav_items_container}>
-         <li>Login</li>
-         <li className={styles_main.active_nav}>Sign Up</li>
-        </ul>
-      </header>
+      </center>
     </div>
   );
 }
