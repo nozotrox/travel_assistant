@@ -52,6 +52,26 @@ const isValidPassword = (inputValue) => {
 }
 
 /**
+ * Verifies if password and confirm password are the same
+ * @param {string} password - the first inputed password value
+ * @param {string} confirmPasword - the second inputed password valued
+ * @returns {boolean} 
+ */
+const isValidConfirmationPassword = (password, confirmPasword) => {
+    return password === confirmPasword
+}
+
+
+/**
+ * Verifies if name is at minimum 3 characters long
+ * @param {any} name - the value to verify
+ * @returns {any}
+ */
+const isValidFullName = (name) => {
+    return Boolean(name) && name.length >= 3;
+}
+
+/**
  * Verifies if email and passoword are according to the app rules for login data
  * @param {any} email - email to test
  * @param {any} password - password to test
@@ -59,10 +79,32 @@ const isValidPassword = (inputValue) => {
  */
 exports.validateLoginData = (email, password) => {
     const errors = {};
-    if(!isEmail(email))
+    if (!isEmail(email))
         errors.email = 'Invalid Email.';
-    if(!isValidPassword(password))
+    if (!isValidPassword(password))
         errors.password = 'Invalid password. Passwords should be 8 characters long';
 
+    return errors;
+}
+
+/**
+ * Verifies if all registration data is valid for submission
+ * @param {any} fullName - name to test
+ * @param {any} email - email to test
+ * @param {any} password - password to test
+ * @param {any} confirmationPassword - confirmation password to test
+ * @returns {any}
+ */
+exports.validateRegistrationData = (fullName, email, password, confirmationPassword) => {
+    const errors = {};
+    if (!isValidFullName(fullName))
+        errors.name = "Names should be at least 3 characters long";
+    if (!isEmail(email))
+        errors.email = 'Invalid Email.';
+    if (!isValidPassword(password))
+        errors.password = 'Invalid password. Passwords should be 8 characters long';
+    if(!isValidConfirmationPassword(password, confirmationPassword))
+        errors.confirmPassword = "Password and  confirmation password do not match";
+    
     return errors;
 }

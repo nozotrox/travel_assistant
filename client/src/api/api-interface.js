@@ -45,7 +45,27 @@ export const login = async (email, password) => {
         return response.data;
     } catch (error) {
         const unexpectedError = "An unexpected error occured";
-        return { error: error.response? error.response.data.error || unexpectedError : unexpectedError };
+        return { error: error.response ? error.response.data.error || unexpectedError : unexpectedError };
     }
 
+}
+
+/**
+ * API method that registers user
+ * @param {string} name - user full name
+ * @param {string} email - user meail
+ * @param {string} password - user password
+ * @returns {any} - response data or an error
+ */
+export const registerUser = async (name, email, password) => {
+    try {
+        const requestData = { name, email, password };
+        const url = `${process.env.REACT_APP_API_URL}/auth/register`;
+        const response = await axios.post(url, requestData, getDefaultRequestConfig());
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        const unexpectedError = "An unexpected error occured";
+        return { error: error.response ? error.response.data.error || unexpectedError : unexpectedError };
+    }
 }
