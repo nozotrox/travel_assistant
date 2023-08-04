@@ -1,6 +1,6 @@
 
 # Travel Assistant 
-[insert image here]    
+<center><img src="./doc-resources/app.gif"/></center>  
 This project is a travel assistant web-app that allows users to simply search for a destination city and get some information about the location. The following information is provided:     
 * Country's current population and GDP per capita;
 * The weather forecast for that city, and;
@@ -8,8 +8,11 @@ This project is a travel assistant web-app that allows users to simply search fo
 
 This project is composed by a **FrontEnd** and **Backend** service.
 ## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<center> <img src="./doc-resources/ss_01.png"/></center>
+<center> <img src="./doc-resources/ss_02.png"/></center>
+<center> <img src="./doc-resources/ss_03.png"/></center>
+<center> <img src="./doc-resources/ss_04.png"/></center>
+<center> <img src="./doc-resources/ss_05.png"/></center>
 
 
 ## Tech Stack
