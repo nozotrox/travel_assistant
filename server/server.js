@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require("./services/database");
 const User = require('./models/User');
+require('dotenv').config();
 
 const app = express();
 sequelize.sync().then(() => console.log('db is ready'));

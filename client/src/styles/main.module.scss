@@ -1,0 +1,303 @@
+@import "./foundation";
+
+// ::::::::::::::::: NAVIGATION BAR
+#navbar {
+  color: white;
+  padding: 0 1rem;
+  .nav_items_container {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+
+      &.active_nav {
+        color: $color-primary;
+      }
+
+      &:hover {
+        background-color: $color-primary;
+        color: white;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.4s ease-in-out;
+      }
+    }
+  }
+}
+
+
+.logo_container {
+  position: relative;
+  padding: 0.7rem 0.6rem;
+  display: inline-block;
+  h1 { 
+    display: inline;
+  }
+  .dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: $color-primary;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 22px;
+    right: -7px;
+  }
+}
+
+
+// ::::::::::::::::: BANNER
+.banner {
+  padding: 2rem 0;
+  span {
+    font-family: "Russo One", sans-serif;
+    color: $color-primary;
+    font-size: 42pt;
+  }
+
+  p {
+    width: 60%;
+    color: white;
+  }
+}
+
+// ::::::::::::::::: MAP
+.map_container {
+  position: relative;
+  width: 70%;
+  height: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+}
+
+.cityInfoContainer {
+  width: 20%;
+  height: 600px;
+  border-radius: 10px;
+  border: 1px solid #393939;
+  padding: 1rem;
+  color: white;
+  font-weight: 400;
+  background-color: $color-background-dark;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+  .cityTitle {
+    font-size: 9pt;
+  }
+
+  .currentWeatherInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .currentDate {
+      font-size: 8pt;
+      font-weight: 400;
+      display: block;
+      margin-top: -0.7rem;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .currentWeatherValue {
+    font-size: 42pt;
+  }
+
+  .forecastWeahterInfo {
+    border-bottom: 0.5px solid #424242;
+    .weatherForecastItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      font-size: 14pt;
+      background-color: #24242481;
+      padding: 0.3rem 0.6rem;
+      border-radius: 14px;
+      margin: 0.5rem 0;
+
+      .min {
+        font-weight: 400;
+        font-size: 9pt;
+        margin: 0 0.3rem;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin: 0 0.4rem;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 400;
+    color: $color-text-faded;
+    font-size: 10pt;
+  }
+}
+
+.xRateContainer {
+  padding: 0.3rem 0.7rem;
+  margin: 0.7rem 0;
+  border-radius: 10px;
+  background-color: #24242481;
+  > div {
+    span {
+      font-size: 8pt;
+      margin: 0 0.2rem;
+    }
+  }
+
+  .currencyInfo {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 18pt;
+    }
+    span {
+      display: inline-block;
+      color: white;
+      font-weight: 400;
+      margin-left: 0rem;
+      font-size: 10pt;
+    }
+
+    .currenySymb {
+      font-size: 12pt;
+      font-weight: bold;
+      color: $color-text-faded;
+    }
+
+    .divider {
+      border-right: 1px solid #424242;
+      padding-right: 2rem;
+    }
+  }
+}
+
+.hDivider {
+  height: 0.5px;
+  width: 100%;
+  background-color: #424242;
+}
+
+.countryInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  .indicatorItem {
+    padding: 0.8rem;
+    background-color: #24242481;
+    border-radius: 10px;
+    font-size: 8pt;
+    color: $color-text-faded;
+
+    h1 {
+      color: white;
+      font-size: 18pt;
+      margin: 0;
+    }
+  }
+}
+
+.authenticateBanner {
+  display: flex;
+  flex-direction: column;
+  background-color: #24242481;
+  margin: 1rem 0;
+  border-radius: 10px;
+  padding: 6rem 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 10pt;
+  height: 60px;
+
+  p {
+    color: $color-text-faded;
+  }
+}
+
+.mainContentContainer {
+  display: flex;
+  padding: 1rem 5rem;
+  > div {
+    display: inline-block;
+  }
+}
+
+.buttonsAuthContainer {
+  span {
+    display: inline-block;
+    margin: 0 1rem;
+    padding: 0.4rem 0.8rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:first-child {
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+
+    &:last-child {
+      background-color: $color-primary;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: $button-hover-dark
+      }
+    }
+  }
+}
+
+
+.modalBody { 
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.modalButtonsContainer { 
+  button { 
+    &:last-child { 
+      margin: 0 1rem;
+      background-color: transparent;
+      color: $color-dark;
+      border: none;
+    }
+
+    &:first-child { 
+      background-color: $color-primary;
+      border-radius: 20px;
+      border: none;
+
+      &:hover { 
+        background-color: $button-hover-dark;
+      }
+    }
+  }
+}

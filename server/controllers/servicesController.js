@@ -27,24 +27,16 @@ exports.getCityInfo = async (req, res) => {
 
         // :::: Get Location Info
         const { lat, lon } = req.query;
-        let url = `${WEATHER_API_URL}?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHER_API_KEY}`;
+        let url = `${WEATHER_API_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.OPENWEATHER_API_KEY}`;
         let response = await axios.get(url);
 
-        const forecastData = response.data;
-        const forecast = {
-            weather: forecastData.weather,
-            main: forecastData.main,
-            wind: forecastData.wind,
-            clouds: forecastData.clouds,
-            name: forecastData.name,
-            sys: forecastData.sys,
-        };
-
+        const { list, city } = response.data;
+        const forecast = { list, city };
 
         // :::: Get Exchange Rage
         let exchangeRate = {};
         if (req.isAuth) {
-            const currency = config.get(`country-currency.${forecast.sys.country}`);
+            const currency = config.get(`country-currency.${forecast.city.country}`);
             url = `${EXCHANGERATE_API_URL}?access_key=${process.env.EXCHANGERATES_API_KEY}&symbols=${currency}`;
             response = await axios.get(url);
             exchangeRate = response.data;
@@ -54,7 +46,7 @@ exports.getCityInfo = async (req, res) => {
         let countryData = {};
         if (req.isAuth) {
             const year = new Date().getFullYear() - 1;
-            const countryCode = forecastData.sys.country;
+            const countryCode = forecast.city.country;
 
             url = `${WORLDBANK_API_URL}/${countryCode}/indicators/${GDP_PER_CAPITA_ICODE}?format=json&date=${year}`;
             response = await axios.get(url);
@@ -92,7 +84,6 @@ exports.getCityInfo = async (req, res) => {
  */
 exports.getCityOptions = async (req, res) => {
     try {
-
         const { q } = req.query;
         const url = `${CITIES_API_URL}?q=${q}&limit=${CITIES_SEARCH_LIMIT}&appid=${process.env.OPENWEATHER_API_KEY}`;
         const response = await axios.get(url);

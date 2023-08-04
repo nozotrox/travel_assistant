@@ -1,0 +1,26 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root { 
+  width: 100%;
+  height: 100%;
+}
+
+
+#root {
+  background-image:
+    linear-gradient(to top, rgba(36,36,36,1) 30%, rgba(36,36,36,.4) 80%, rgba(36,36,36,0.6) 100%),
+    url(assets/images/main_bg.jpg);
+    background-size: cover;
+    background-position: 60%;
+    width: 100%;
+    height: 100%;
+}
+
+.leaflet-container { 
+  height: 600px;
+  border-radius: 10px;
+}

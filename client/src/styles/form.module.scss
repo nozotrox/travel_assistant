@@ -1,0 +1,127 @@
+@import "./foundation";
+
+.searchInput {
+  outline: none;
+  border-radius: 50px;
+  color: $color-text-dark;
+  border-color: transparent;
+  font-weight: 400;
+  padding-left: 40px;
+  background: $color-dark url("../assets/icons/search.svg") no-repeat 10px
+    center;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+  &:focus, &:hover {
+    border-color: $color-primary !important;
+    outline: none;
+    background-color: $color-dark;
+    color: $color-text-dark;
+  }
+}
+
+.cityHintContainer {
+  width: 100%;
+  padding: 0 3rem 0 1rem;
+}
+
+.cityHintList {
+  padding: 1.5rem 1rem;
+  background-color: $color-dark;
+  color: white;
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  border-radius: 10px;
+
+  .listItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+
+    div {
+      padding: 0.7rem;
+      p {
+        font-weight: 500;
+        margin-bottom: -0.5rem;
+        font-size: 11pt;
+      }
+
+      small {
+        font-weight: 400;
+        color: $color-text-faded;
+        font-size: 8pt;
+      }
+
+      .icon {
+        padding: 0 0 !important;
+      }
+    }
+
+    &:hover {
+      background-color: #ffffff11;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.mapFormContainer {
+  width: 800px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  left: calc((100% - 800px) / 2);
+  top: 1rem;
+  > * {
+    display: inline-block;
+  }
+
+  .searchFormGroup {
+    width: 80%;
+    margin: 0 1rem;
+  }
+
+  .searchButton {
+    border-radius: 50px;
+    background-color: $color-primary;
+    border-color: transparent;
+
+    box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+    -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+    -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+    &:hover,
+    &:focus {
+      background-color: $button-hover-dark;
+    }
+  }
+}
+
+.closeSearchResultsButton {
+  color: white;
+  background-color: $color-dark;
+  margin: 1rem 0 0 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 9pt;
+  border-radius: 15px;
+  z-index: 1000;
+
+  box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: -1px 3px 25px 0px rgba(0, 0, 0, 0.39);
+
+  &:hover {
+    background-color: $color-primary;
+    cursor: pointer;
+  }
+}
+
+.inputLabel { 
+  font-size: 10pt;
+  color: $color-text-faded;
+  font-weight: 400;
+}
