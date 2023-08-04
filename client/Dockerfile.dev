@@ -1,0 +1,12 @@
+FROM node:alpine AS development
+ENV NODE_ENV development
+
+WORKDIR /usr/src/app/reactApp
+
+COPY ./package.json /usr/src/app/reactApp
+RUN npm install
+
+COPY . .
+
+CMD npm start
+
