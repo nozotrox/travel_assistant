@@ -12,6 +12,8 @@ import moment from "moment";
 import {
   IDLE_STATUS,
   LOADING_STATUS,
+  LOGIN_MODAL_NAME,
+  REGISTER_MODAL_NAME,
   RESULTS_FOUND_STATUS,
 } from "../utils/constants";
 import LOADING_SVG from "../assets/icons/loading.svg";
@@ -147,12 +149,18 @@ const CountryDataInfo = () => {
 };
 
 const SubscribeLayout = () => {
+    const appContext = useContext(AppContext);
+
+    const openModal = (modalName) => { 
+        appContext.setState({...appContext.state, modal: modalName});
+    }
+
   return (
     <div className={styles_main.authenticateBanner}>
       <p>Login or Register to see more information.</p>
       <div className={styles_main.buttonsAuthContainer}>
-          <span>Login</span>
-          <span>Sign Up</span>
+          <span onClick={e => openModal(LOGIN_MODAL_NAME)}>Login</span>
+          <span onClick={e => openModal(REGISTER_MODAL_NAME)}>Sign Up</span>
       </div>
     </div>
   );

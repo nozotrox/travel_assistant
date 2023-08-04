@@ -64,7 +64,6 @@ export const registerUser = async (name, email, password) => {
         const response = await axios.post(url, requestData, getDefaultRequestConfig());
         return response.data;
     } catch (error) {
-        console.log(error);
         const unexpectedError = "An unexpected error occured";
         return { error: error.response ? error.response.data.error || unexpectedError : unexpectedError };
     }

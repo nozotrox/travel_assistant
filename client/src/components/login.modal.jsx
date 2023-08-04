@@ -111,7 +111,7 @@ const LoginModal = () => {
             />
             <FormFeedback>{validationErrors.password}</FormFeedback>
           </FormGroup>
-          <div className={styles_main.modalButtonsContainer}>
+          <div className={`${styles_main.modalButtonsContainer} mt-5`}>
             <Button onClick={(e) => handleSubmit(e)}>Submit</Button>
             <Button onClick={(e) => handleCancel(e)}>Cancel</Button>
           </div>
