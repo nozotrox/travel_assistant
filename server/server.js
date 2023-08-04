@@ -17,11 +17,11 @@ const authRoutes = require("./routes/authRoute");
 const servicesRoutes = require("./routes/servicesRoute");
 
 
-app.get('/', verifyToken, (req, res) => {
+app.get('/api/', verifyToken, (req, res) => {
     res.status(200).send("API is UP!");
     // res.status(400).send("Bad Request");
 });
-app.use('/auth', authRoutes);
-app.use('/services', verifyToken, servicesRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/services', verifyToken, servicesRoutes);
 
 app.listen(process.env.PORT || 3000);
