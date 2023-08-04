@@ -2,6 +2,7 @@ require("dotenv").config();
 const User = require("../models/User");
 const { hashPassword, comparePasswords } = require("../utils/helpers");
 const jwt = require('jsonwebtoken');
+const { validationResult } = require("express-validator");
 const config = require('config');
 
 /**
@@ -12,6 +13,12 @@ const config = require('config');
  */
 exports.register = async (req, res) => {
     try {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) { 
+            return res.status(400).send({
+                errors: errors.array(),
+            })
+        }
 
         const { name, email, password } = req.body;
         const dbUser = await User.findOne({ where: { email } });
@@ -60,8 +67,14 @@ exports.register = async (req, res) => {
  */
 exports.login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) { 
+            return res.status(400).send({
+                errors: errors.array(),
+            })
+        }
 
+        const { email, password } = req.body;
         const user = await User.findOne({ where: { email } });
 
         if (user) {
