@@ -46,8 +46,7 @@ const LoginModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const errors = validateLoginData(form.email, form.password);
-    const errors = {};
+    const errors = validateLoginData(form.email, form.password);
     setValidationErrors(errors);
 
     if (!Boolean(Object.keys(errors).length)) {

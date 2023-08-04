@@ -108,7 +108,7 @@ const ExchangeRateInfo = () => {
         <span>Exchange Rate</span>
       </div>
       <div className={styles_main.currencyInfo}>
-        <h1 className={styles_main.divider}>
+        <h1>
           1 <span className={styles_main.currenySymb}>EUR</span>
         </h1>
         <h1>
