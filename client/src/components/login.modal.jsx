@@ -41,6 +41,7 @@ const LoginModal = () => {
   const handleCancel = (e) => {
     e.preventDefault();
     closeModal();
+    resetState();
   };
 
   const handleSubmit = async (e) => {
