@@ -1,4 +1,7 @@
 {
+    "auth": {
+        "jwt_expire_time": "1h"
+    },
     "database": {
         "type": "sqlite",
         "name": "travel-agency",

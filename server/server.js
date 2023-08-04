@@ -18,7 +18,7 @@ const servicesRoutes = require("./routes/servicesRoute");
 
 
 app.get('/', verifyToken, (req, res) => {
-    res.status(200).send({user: req.user, isAuth: req.isAuth});
+    res.status(200).send("API is UP!");
     // res.status(400).send("Bad Request");
 });
 app.use('/auth', authRoutes);

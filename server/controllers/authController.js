@@ -2,6 +2,7 @@ require("dotenv").config();
 const User = require("../models/User");
 const { hashPassword, comparePasswords } = require("../utils/helpers");
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 /**
  * Registers user to the database
@@ -17,7 +18,7 @@ exports.register = async (req, res) => {
         const passwordHashResult = hashPassword(password);
 
         if (dbUser) {
-            res.status(400).send('User already exists!');
+            res.status(400).send({ error: 'User already exists!' });
         } else {
             const user = await User.create({
                 name,
@@ -25,8 +26,22 @@ exports.register = async (req, res) => {
                 password: passwordHashResult.hashedPassword,
                 salt: passwordHashResult.salt,
             });
+
+            const authToken = jwt.sign(
+                {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: config.get("auth.jwt_expire_time"),
+                }
+            )
+            user.authToken = authToken;
+
             res.status(201);
-            res.send(user);
+            res.send({name: user.name, email: user.email, id: user.id, authToken});
         }
 
     } catch (error) {
@@ -60,11 +75,11 @@ exports.login = async (req, res) => {
                     },
                     process.env.JWT_SECRET,
                     {
-                        expiresIn: "1h",
+                        expiresIn: config.get("auth.jwt_expire_time"),
                     }
                 )
                 user.authToken = authToken;
-                const responseObj = {...user.dataValues, authToken};
+                const responseObj = { name: user.name, email: user.email, id: user.id, authToken };
 
                 res.status(201);
                 res.send(responseObj);
@@ -72,7 +87,7 @@ exports.login = async (req, res) => {
             }
         }
         res.status(400);
-        res.send({ message: 'Invalid email or password!' });
+        res.send({ error: 'Invalid email or password!' });
 
     } catch (error) {
         res.status(500);
