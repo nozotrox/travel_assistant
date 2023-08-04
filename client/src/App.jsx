@@ -1504,6 +1504,7 @@ function App() {
     location: {},
     xChangeRate: {},
     popData: {},
+    modal: '',
     status: IDLE_STATUS,
   });
 

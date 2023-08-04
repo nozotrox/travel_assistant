@@ -31,6 +31,12 @@ export const getCityInformation = async (location) => {
     }
 }
 
+/**
+ * API method that sends login credentials 
+ * @param {string} email - user email
+ * @param {string} password - user password
+ * @returns {object} - response data or an error
+ */
 export const login = async (email, password) => {
     try {
         const requestData = { email, password };
@@ -38,7 +44,8 @@ export const login = async (email, password) => {
         const response = await axios.post(url, requestData, getDefaultRequestConfig());
         return response.data;
     } catch (error) {
-        return { message: "An unexpected error occured" };
+        const unexpectedError = "An unexpected error occured";
+        return { error: error.response? error.response.data.error || unexpectedError : unexpectedError };
     }
 
 }
