@@ -15,7 +15,7 @@ import { useContext, useState } from "react";
 import { validateLoginData } from "../utils/helpers";
 import { login } from "../api/api-interface";
 import { AppContext } from "../hooks/Context";
-import { LOGIN_MODAL_NAME } from "../utils/constants";
+import { AUTH_TOKEN_KEY, LOGIN_MODAL_NAME, USER_STORAGE_KEY } from "../utils/constants";
 
 const LoginModal = () => {
   const appContext = useContext(AppContext);
@@ -28,6 +28,7 @@ const LoginModal = () => {
   const [hasLoggedIn, setHasLoggedIn] = useState(false);
 
   const resetState = () => {
+    setForm({name: "", password: ""});
     setValidationErrors({});
     setResponseError();
     setHasLoggedIn(false);
@@ -50,7 +51,9 @@ const LoginModal = () => {
     if (!Boolean(Object.keys(errors).length)) {
       const response = await login(form.email, form.password);
       if (response.error) return setResponseError(response.error);
-
+        
+      sessionStorage.setItem(AUTH_TOKEN_KEY, response.authToken);
+      sessionStorage.setItem(USER_STORAGE_KEY, JSON.stringify(response));
       setHasLoggedIn(true);
       setTimeout(() => {
         closeModal();
@@ -70,7 +73,7 @@ const LoginModal = () => {
           <AppLogo />
         </center>
         <Form className="py-4 px-4">
-          {Boolean(responseError) && (
+          {(Boolean(responseError)  && !hasLoggedIn) && (
             <Alert color="danger">
               <small>{responseError}</small>
             </Alert>

@@ -1,3 +1,5 @@
+const { AUTH_TOKEN_KEY } = require("./constants");
+
 /**
  * Returns request config without the authentication header included. 
  * For default requests
@@ -23,7 +25,7 @@ exports.getAuthRequestConfig = () => {
     const config = {
         headers: {
             "Content-Type": "application/json",
-            "x-access-token": "",
+            "x-access-token": sessionStorage.getItem(AUTH_TOKEN_KEY),
         }
     }
 
