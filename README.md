@@ -26,7 +26,7 @@ This project is composed by a **FrontEnd** and **Backend** service.
 
 #### Register
 
-```http
+```sh
   POST /api/auth/register
 ```
 
@@ -38,7 +38,7 @@ This project is composed by a **FrontEnd** and **Backend** service.
 
 #### Login
 
-```http
+```sh
   POST /api/auth/login
 ```
 
@@ -49,7 +49,7 @@ This project is composed by a **FrontEnd** and **Backend** service.
 
 #### Get City Information (Forecast, exchange rate, gdp per capita, population)
 
-```http
+```sh
   GET /api/services/travelinfo?lat=&lon=
 ```
 
@@ -60,7 +60,7 @@ This project is composed by a **FrontEnd** and **Backend** service.
 
 #### Get Cities by search keyword term
 
-```http
+```sh
   GET /api/services/cities?q=
 ```
 
@@ -160,5 +160,14 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 ## License
-
 Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. 
+
+## Contacts
+[![@nozotrox][Twitter-badge]](https://twitter.com/nozotrox)   
+[![@nozotrox][LinkedIn-badge]](http://www.linkedin.com/in/feliciano-jr-mazoio)   
+![feliciano.j.a.mazoio@gmail.com][Gmail-badge]
+
+[Twitter-badge]:https://img.shields.io/badge/Twitter-1DA1F2?style=social&logo=twitter&logoColor=blue&label=@nozotrox
+[Github-badge]:https://img.shields.io/badge/GitHub-100000?style=social&logo=github&label=nozotrox&logoColor=#242424
+[LinkedIn-badge]:https://img.shields.io/badge/LinkedIn-0077B5?style=social&logo=linkedin&label=Feliciano_Mazoio&logoColor=blue
+[Gmail-badge]:https://img.shields.io/badge/Gmail-D14836?style=social&logo=gmail&label=feliciano.j.a.mazoio@gmail.com&logoColor=red
