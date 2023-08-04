@@ -45,6 +45,9 @@ export const login = async (email, password) => {
         return response.data;
     } catch (error) {
         const unexpectedError = "An unexpected error occured";
+        // :: case: input field validation error
+        if (Boolean(error.response) && error.response.data.errors)
+            return { error: error.response.data.errors[0].msg };
         return { error: error.response ? error.response.data.error || unexpectedError : unexpectedError };
     }
 
@@ -65,6 +68,9 @@ export const registerUser = async (name, email, password) => {
         return response.data;
     } catch (error) {
         const unexpectedError = "An unexpected error occured";
+        // :: case: input field validation error
+        if (Boolean(error.response) && error.response.data.errors)
+            return { error: error.response.data.errors[0].msg };
         return { error: error.response ? error.response.data.error || unexpectedError : unexpectedError };
     }
 }
