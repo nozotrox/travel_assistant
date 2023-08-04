@@ -96,7 +96,7 @@
 
     &:hover,
     &:focus {
-      background-color: #45b28c;
+      background-color: $button-hover-dark;
     }
   }
 }
@@ -118,4 +118,10 @@
     background-color: $color-primary;
     cursor: pointer;
   }
+}
+
+.inputLabel { 
+  font-size: 10pt;
+  color: $color-text-faded;
+  font-weight: 400;
 }
